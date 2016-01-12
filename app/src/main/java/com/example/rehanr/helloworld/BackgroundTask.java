@@ -34,7 +34,7 @@ public class BackgroundTask extends AsyncTask<String,Void,String> {
 
 
         //URL OF DATABASE
-        add_info_url = "127.0.0.1";
+        add_info_url = "http://127.0.0.1/reg.php";
 
     }
 
@@ -69,10 +69,10 @@ public class BackgroundTask extends AsyncTask<String,Void,String> {
                         URLEncoder.encode("age", "UTF-8") + "=" + URLEncoder.encode(age, "UTF-8") + "&" +
                         URLEncoder.encode("email", "UTF-8") + "=" + URLEncoder.encode(email, "UTF-8") + "&" +
                         URLEncoder.encode("username", "UTF-8") + "=" + URLEncoder.encode(username, "UTF-8") + "&" +
-                        URLEncoder.encode("password", "UTF-8") + "=" + URLEncoder.encode(password, "UTF-8") +
-                        URLEncoder.encode("phone", "UTF-8") + "=" + URLEncoder.encode(phone, "UTF-8") + "&" +
-                        URLEncoder.encode("country", "UTF-8") + "=" + URLEncoder.encode(country, "UTF-8") + "&" +
-                        URLEncoder.encode("district", "UTF-8") + "=" + URLEncoder.encode(district, "UTF-8") + "&";
+                        URLEncoder.encode("password", "UTF-8") + "=" + URLEncoder.encode(password, "UTF-8")+ "&" +
+                        URLEncoder.encode("phone", "UTF-8") + "=" + URLEncoder.encode(phone, "UTF-8")+ "&" +
+                        URLEncoder.encode("country", "UTF-8") + "=" + URLEncoder.encode(country, "UTF-8")+ "&" +
+                        URLEncoder.encode("district", "UTF-8") + "=" + URLEncoder.encode(district, "UTF-8");
 
                 bufferedWriter.write(data);
                 bufferedWriter.flush();
