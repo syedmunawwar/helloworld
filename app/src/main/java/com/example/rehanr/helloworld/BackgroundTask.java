@@ -22,8 +22,6 @@ import java.net.URLEncoder;
 public class BackgroundTask extends AsyncTask<String,Void,String> {
 
     Context ctx;
-    String add_info_url;
-    boolean flagcontinueactivity;
 
     public BackgroundTask(Context ctx) {
         this.ctx = ctx;
@@ -31,11 +29,7 @@ public class BackgroundTask extends AsyncTask<String,Void,String> {
 
     @Override
     protected void onPreExecute() {
-
-
-        //URL OF DATABASE
-        add_info_url = "http://127.0.0.1/reg.php";
-
+        super.onPreExecute();
     }
 
     @Override
@@ -43,7 +37,7 @@ public class BackgroundTask extends AsyncTask<String,Void,String> {
 
         String method = params[0];
 
-
+        String reg_url = "http://10.0.2.2/webapp/reg.php";
         if (method.equals("register")) {
 
             String name = params[1];
@@ -58,7 +52,7 @@ public class BackgroundTask extends AsyncTask<String,Void,String> {
 
             URL url = null;
             try {
-                url = new URL(add_info_url);
+                url = new URL(reg_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
@@ -83,11 +77,11 @@ public class BackgroundTask extends AsyncTask<String,Void,String> {
                 IS.close();
 
                 //for 000webhost.com site
-                httpURLConnection.disconnect();
+                //httpURLConnection.disconnect();
                 //for 000webhost.com site
 
 
-                return "Registration Successfully Done...";
+                return "Successfully Registered..";
 
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -102,12 +96,8 @@ public class BackgroundTask extends AsyncTask<String,Void,String> {
 
     @Override
     protected void onPostExecute(String result) {
-        if (flagcontinueactivity) {
-            if (result.equals("Registration Successfully Done...")) {
+
                 Toast.makeText(ctx, result, Toast.LENGTH_LONG).show();
-            }
-            //to disable LoginActivity after backbutton pressed
-            //((Activity)ctx).finish();}
-        }
+
     }
 }
